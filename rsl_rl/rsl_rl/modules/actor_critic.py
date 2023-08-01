@@ -35,23 +35,26 @@ import torch.nn as nn
 from torch.distributions import Normal
 from torch.nn.modules import rnn
 
-def check_action(actions):
+lower_bound = -1.0 - 0.01
+upper_bound = 1.0 + 0.01
 
-    return True
-    try: 
-        for action in actions:
-            for action_component in action:
-                if not (-1 - 0.01 <= action_component <=
-                            1 + 0.01):
-                    return False
-        return True
-    except:
-        for action_component in actions:
-                if not (-1 - 0.01 <= action_component <=
-                            1 + 0.01):
-                    return False
-        return True
+class TruncatedNormal(Normal):
+    def __init__(self, loc, scale, low, high):
+        super(TruncatedNormal, self).__init__(loc, scale)
+        self.low = low
+        self.high = high
 
+    def rsample(self, sample_shape=torch.Size()):
+        # Use the reparameterization trick for sampling
+        eps = self.loc.new(*sample_shape).normal_()
+        return torch.clamp(self.loc + eps * self.scale, self.low, self.high)
+
+    def log_prob(self, value):
+        log_prob = super(TruncatedNormal, self).log_prob(value)
+        # Set log_prob to -inf for values outside the [low, high] range
+        log_prob[value < self.low] = float('-inf')
+        log_prob[value > self.high] = float('-inf')
+        return log_prob
 
 class ActorCritic(nn.Module):
     is_recurrent = False
@@ -82,9 +85,6 @@ class ActorCritic(nn.Module):
         self.embed_act = nn.Linear(num_embed_act, 128)
         self.embed_rew = nn.Linear(num_embed_reward, 16)
         # num_embed_obs = observation + heurestics dimension
-        
-        
-        
         
         # Policy
         actor_layers = []
@@ -149,29 +149,22 @@ class ActorCritic(nn.Module):
         return self.distribution.entropy().sum(dim=-1)
 
     def update_distribution(self, observations, hurestics):
-        # print(hurestics[0].shape)
-        # print(observations.shape)
         x = self.embed(hurestics[0])
         y = self.embed_act(hurestics[1])
         z = self.embed_rew(hurestics[2])
 
         embed = torch.cat([x,y,z], -1)
-        # print(embed.shape, observations.shape)
-        # print("1")
+
         obs = torch.cat((embed, observations), -1)
         mean = self.actor(obs)
-        # print("1")
         self.distribution = Normal(mean, mean*0. + self.std)
-
+        
     def act(self, observations, hurestics ,**kwargs):
 
         self.update_distribution(observations, hurestics)
-        action = self.distribution.sample()
-        if check_action(action):
-            return action
-        else:
-            return self.act(observations, hurestics)
-    
+        action = torch.clamp(self.distribution.sample(), lower_bound, upper_bound)
+        return action
+        
     def get_actions_log_prob(self, actions):
         return self.distribution.log_prob(actions).sum(dim=-1)
 
