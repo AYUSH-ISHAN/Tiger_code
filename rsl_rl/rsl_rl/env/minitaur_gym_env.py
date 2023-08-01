@@ -324,10 +324,10 @@ class MinitaurGymEnv(gym.Env):
 
   def _transform_action_to_motor_command(self, action):
     if self._leg_model_enabled:
-      # for i, action_component in enumerate(action):
-      #   if not (-self._action_bound - ACTION_EPS <= action_component <=
-      #           self._action_bound + ACTION_EPS):
-      #     raise ValueError("{}th action {} out of bounds.".format(i, action_component))
+      for i, action_component in enumerate(action):
+        if not (-self._action_bound - ACTION_EPS <= action_component <=
+                self._action_bound + ACTION_EPS):
+          raise ValueError("{}th action {} out of bounds.".format(i, action_component))
       action = self.minitaur.ConvertFromLegModel(action)
     return action
 
