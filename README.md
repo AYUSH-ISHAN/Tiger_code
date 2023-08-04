@@ -23,7 +23,7 @@ where various terms of motivation and regularization require elaborated refineme
 # Algorithm
 
 <p align = "center">
-<img src = "./assets/latest_algo.jpg" align="center", height="600" width="600"/><br>
+<img src = "./assets/latest_algo.jpg" align="center", height="600" width="650"/><br>
 <em>Our algorithm</em>
 </p>
 
