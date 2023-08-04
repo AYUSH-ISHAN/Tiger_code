@@ -15,8 +15,10 @@ behaviors by reward engineering is the arduous reward-shaping process involved. 
 become extremely demanding in developing highly dynamic skills such as jumping and backflipping,
 where various terms of motivation and regularization require elaborated refinement.
  
-
-![Screenshot 2023-07-29 092050](https://github.com/AYUSH-ISHAN/TIGER_environment/assets/97011852/fc39de49-580b-4bac-b30f-1f4a6a5f9413)
+<p align = "center">
+<img src = "https://github.com/AYUSH-ISHAN/Tiger_code/blob/main/assets/minitaur.jpeg" align="center"/><br>
+<em>Minitaur in real life</em>
+</p>
 
 # Algorithm
 
