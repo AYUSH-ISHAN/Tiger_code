@@ -20,7 +20,7 @@ where various terms of motivation and regularization require elaborated refineme
 
 # Algorithm
 
-![Algorithm ](https://github.com/AYUSH-ISHAN/TIGER_environment/assets/97011852/d94e02d5-acaa-42a1-b003-fadbec353781)
+![Algorithm ](https://github.com/AYUSH-ISHAN/Tiger_code/blob/main/assets/latest_algo.jpg)
 
 # Results
 # References
