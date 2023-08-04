@@ -22,7 +22,10 @@ where various terms of motivation and regularization require elaborated refineme
 
 # Algorithm
 
-![Algorithm ](https://github.com/AYUSH-ISHAN/Tiger_code/blob/main/assets/latest_algo.jpg)
+<p align = "center">
+<img src = "./assets/latest_algo.jpg" align="center", height="600" width="600"/><br>
+<em>Our algorithm</em>
+</p>
 
 # Results
 # References
