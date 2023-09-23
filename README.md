@@ -1,10 +1,4 @@
-# Tiger_code
-This repo will contain all the training and results code of Tiger. 
-tiger_env_helper - env and few helper file
-rls_rl - RL related codes
-# TIGER_environment
-
- # Preface 
+# Preface 
 Obtaining dynamic skills for autonomous machines has been a cardinal challenge in robotics. In the
 field of legged systems, many attempts have been made to attain diverse skills using conventional
 inverse kinematics techniques. In recent years, learning-based quadrupedal locomotion has
@@ -54,11 +48,3 @@ where various terms of motivation and regularization require elaborated refineme
 3)<a href="https://drive.google.com/file/d/1qdk-Ph3SiBDkevclh51l-SUrrh0ICsIi/view?usp=sharing">Deep Whole-Body Control: Learning a Unified Policy for Manipulation
 and Locomotion: Zipeng Fu, Xuxin Cheng, Deepak Pathak<a>
 
-# add a abstract (Story).
-# introduction (usage of legged robotics)
-# robot images
-# algoritgm
-# details
-# Add some medias - (images, gif) - walking robot
-# Results.
-# References
