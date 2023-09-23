@@ -28,6 +28,22 @@ where various terms of motivation and regularization require elaborated refineme
 </p>
 
 # Results
+<table align = "center">
+<tr>
+ <td>Mean Reward Vs Epochs</td>
+ <td><img src = "assets/reward.png" width = "400" height = "400"/></td>
+</tr>
+<tr>
+ <td>Mean Value Loss Vs Epochs</td>
+ <td><img src = "assets/value_loss.png" width = "400" height = "400"/></td>
+</tr>
+<tr>
+ <td>Mean Surrogate Loss Vs Epochs</td>
+ <td><img src = "assets/surrogate_loss.png" width = "400" height = "400"/></td>
+</tr>
+ 
+</table>
+
 # References
 
 1)<a href="https://drive.google.com/file/d/1MK54cn8JUzRRfdzMHomhmVs9A3J_teJl/view?usp=sharing/">Legged Locomotion in Challenging Terrains using Egocentric Vision: Ananye Agarwal, Ashish Kumar, Jitendra Malik, Deepak Pathak</a>
